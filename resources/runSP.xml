@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="SP">
-  <test name="Test SP">
+<suite name="Shopify">
+
+  <test name="Test Partner Shopify">
     <classes>
-      <class name="common.TC01_Login"/>
+      <class name="common.Shopify_LoginWithParner"/>
     </classes>
-  </test> <!-- Test -->
-</suite> <!-- Suite -->
+  </test> 
+  
+</suite>
