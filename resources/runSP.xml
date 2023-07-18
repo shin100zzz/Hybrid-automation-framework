@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Shopify">
 
-  <test name="Test Partner Shopify">
+  <test name="Run on Firefox">
+  	<parameter name = "browser" value="firefox"/>
+    <classes>
+      <class name="common.Shopify_LoginWithParner"/>
+    </classes>
+  </test> 
+  
+   <test name="Run on Chrome">
+  	<parameter name = "browser" value="chrome"/>
     <classes>
       <class name="common.Shopify_LoginWithParner"/>
     </classes>

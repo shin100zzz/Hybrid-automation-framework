@@ -2,18 +2,18 @@ package common;
 
 import org.testng.annotations.Test;
 
+import commons.BaseTest;
 import pageObjects.Shopify_LoginWithPartnerObject;
 
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 
-public class Shopify_LoginWithParner {
+public class Shopify_LoginWithParner extends BaseTest{
 	
 	// Declar
 	private WebDriver driver;
@@ -22,19 +22,12 @@ public class Shopify_LoginWithParner {
 	Shopify_LoginWithPartnerObject formLogin;
 	String projectPath = System.getProperty("user.dir");
 	String osName = System.getProperty("os.name");
-
+	
+  @Parameters("browser")
   @BeforeClass  
-  public void beforeClass() {
-		if (osName.contains("Windows")) {
-			System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\chromedriver.exe");
-//			System.setProperty("webdriver.chrome.driver", projectPath + "\\browserDrivers\\chromedriver.exe");		
-		} else {
-			System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver");
-//			System.setProperty("webdriver.chrome.driver",projectPath + "/browserDrivers/chromedriver");
-		}
-
-		driver = new FirefoxDriver();
-//		driver = new ChromeDriver();
+  public void beforeClass(String browserName) {
+	  	driver = getBrowserDriver(browserName);
+		
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		driver.get("https://partners.shopify.com/2393784/stores");
