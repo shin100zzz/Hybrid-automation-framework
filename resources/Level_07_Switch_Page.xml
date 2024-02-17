@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="NopCommerce">
+
+	<test name="Run on CHORME">
+		<parameter name="browser" value="chrome_setup_version" />
+		<classes>
+			<class name="com.nopcommerce.user.Level_07_Switch_Page" />
+		</classes>
+	</test>
+</suite>

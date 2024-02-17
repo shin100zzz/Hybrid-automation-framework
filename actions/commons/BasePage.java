@@ -3,8 +3,10 @@ package commons;
 import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -19,6 +21,11 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import commonPageUIs.BasePageUploadFileUI;
+import pageObjects.nopCommerce.user.NopCommerce_User_AddressPageObject;
+import pageObjects.nopCommerce.user.NopCommerce_User_CustomerInforPageObject;
+import pageObjects.nopCommerce.user.NopCommerce_User_MyProductReviewPageObject;
+import pageObjects.nopCommerce.user.NopCommerce_User_RewardPointPageObject;
+import pageUI.nopCommerce.user.BasePageUI;
 
 public class BasePage {
 	WebDriver driver;
@@ -40,6 +47,11 @@ public class BasePage {
 		}
 	}
 
+	public int generateFakeNumber() {
+		Random rand = new Random();
+		return rand.nextInt(1000);
+	}
+	
 	public void openAnyUrl(WebDriver driver, String url) {
 		driver.get(url);
 	}
@@ -515,6 +527,31 @@ public class BasePage {
 			fullFileName = fullFileName.trim();
 			getElement(driver, BasePageUploadFileUI.UPLOAD_FILE).sendKeys(fullFileName);
 		}
+	}
+	
+	
+	public NopCommerce_User_CustomerInforPageObject openCustomerInforPage(WebDriver driver) {
+		waitForElementClickable(driver, BasePageUI.CUSTOMER_INFOR_LINK);
+		clickToElement(driver, BasePageUI.CUSTOMER_INFOR_LINK);
+		return PageGeneratorManager.getUserCustomerInforPageOfnopCommerce(driver);
+	}
+
+	public NopCommerce_User_AddressPageObject openAddressPage(WebDriver driver) {
+		waitForElementClickable(driver, BasePageUI.ADDRESS_LINK);
+		clickToElement(driver, BasePageUI.ADDRESS_LINK);
+		return PageGeneratorManager.getUserAddressPageOfnopCommerce(driver);
+	}
+
+	public NopCommerce_User_MyProductReviewPageObject openMyProductReviewPage(WebDriver driver) {
+		waitForElementClickable(driver, BasePageUI.MY_PRODUCT_REVIEW_LINK);
+		clickToElement(driver, BasePageUI.MY_PRODUCT_REVIEW_LINK);
+		return PageGeneratorManager.getUserMyProductReviewPageOfnopCommerce(driver);
+	}
+
+	public NopCommerce_User_RewardPointPageObject openRewardPoint(WebDriver driver) {
+		waitForElementClickable(driver, BasePageUI.REWARD_POINT_LINK);
+		clickToElement(driver, BasePageUI.REWARD_POINT_LINK);
+		return PageGeneratorManager.getUserRewardPointageOfnopCommerce(driver);
 	}
 
 }

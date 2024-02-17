@@ -4,22 +4,22 @@ import org.testng.annotations.Test;
 
 import commons.BaseTest;
 import commons.PageGeneratorManager;
-import pageObjects.facebook.LoginPageObject;
+import pageObjects.facebook.LoginPageObjectFacebook;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 
-public class Element_Undisplay extends BaseTest {
-	private LoginPageObject loginPage;
+public class Level_13_Element_Undisplay extends BaseTest {
+	private LoginPageObjectFacebook loginPage;
 	private WebDriver driver;
 
 	@Parameters({ "browser", "url" })
 	@BeforeClass
 	public void beforeClass(String browser, String url) {
 		driver = getBrowserDriver(browser, url);
-		loginPage = PageGeneratorManager.getLoginPage(driver);
+		loginPage = PageGeneratorManager.getLoginPageFacebook(driver);
 	}
 
 	@Test
@@ -34,7 +34,6 @@ public class Element_Undisplay extends BaseTest {
 
 	@Test
 	public void TC_02_Verify_Element_Undisplayed_In_DOM() {
-		// Verify false - cho ham tra ve displayed
 		loginPage.enterToEmailAddressTextbox("");
 		loginPage.delay(2);
 		verifyFalse(loginPage.isConfirmEmailAddressTextboxDisplayed());
@@ -45,9 +44,6 @@ public class Element_Undisplay extends BaseTest {
 		loginPage.clickCloseIconRegisterForm();
 		loginPage.delay(2);
 
-		// Verify False - mong doi Confirm email Undisplayed (false)
-		// isDisplayed: ban chat ko kiem tra 1 elment ko co torng DOM duoc
-//		verifyFalse(loginPage.isConfirmEmailAddressTextboxUndisplayed());
 		verifyTrue(loginPage.isConfirmEmailAddressTextboxUndisplayed());
 	}
 

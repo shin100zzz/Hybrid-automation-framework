@@ -3,8 +3,8 @@ package com.jquery;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.jQuery.uploadFile.HomePageObject;
-import pageObjects.jQuery.uploadFile.PageGeneratorManager;
+import pageObjects.jQuery.uploadFile.Jquery_UploadFile_HomePageObject;
+import pageObjects.jQuery.uploadFile.Jquery_UploadFile_PageGeneratorManager;
 
 import org.testng.annotations.Parameters;
 import org.testng.annotations.BeforeClass;
@@ -12,10 +12,10 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 
-public class Upload_Files extends BaseTest {
+public class Level_11_Upload_Files extends BaseTest {
 
 	WebDriver driver;
-	HomePageObject homePage;
+	Jquery_UploadFile_HomePageObject homePage;
 
 	String sharpfileName = "CSharp.png";
 	String javafileName = "Java.png";
@@ -27,7 +27,7 @@ public class Upload_Files extends BaseTest {
 	@BeforeClass
 	public void beforeClass(String browser, String url) {
 		driver = getBrowserDriver(browser, url);
-		homePage = PageGeneratorManager.getHomePage(driver);
+		homePage = Jquery_UploadFile_PageGeneratorManager.getHomePage(driver);
 	}
 
 	@Test

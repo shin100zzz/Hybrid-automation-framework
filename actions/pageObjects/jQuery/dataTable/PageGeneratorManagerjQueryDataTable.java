@@ -2,10 +2,10 @@ package pageObjects.jQuery.dataTable;
 
 import org.openqa.selenium.WebDriver;
 
-public class PageGeneratorManager {
+public class PageGeneratorManagerjQueryDataTable {
 
-	public static HomePageObject getHomePage(WebDriver driver) {
-		return new HomePageObject(driver);
+	public static Jquery_DataTable_HomePageObject getHomePage(WebDriver driver) {
+		return new Jquery_DataTable_HomePageObject(driver);
 	}
 	
 }

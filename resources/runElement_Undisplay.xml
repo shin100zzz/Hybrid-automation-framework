@@ -10,7 +10,7 @@
 	<test name="Run on CHROME">
 		<parameter name="browser" value="chrome_setup" /> 
 		<classes>
-			<class name="com.facebook.register.Element_Undisplay" />
+			<class name="com.facebook.register.Level_13_Element_Undisplay" />
 		</classes>
 	</test>
 </suite> 

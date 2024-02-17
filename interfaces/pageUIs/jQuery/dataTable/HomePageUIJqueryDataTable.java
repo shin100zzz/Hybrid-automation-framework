@@ -1,6 +1,6 @@
 package pageUIs.jQuery.dataTable;
 
-public class HomePageUI {
+public class HomePageUIJqueryDataTable {
 	public static final String TOTAl_PAGINATION = "Xpath=//tr/th[text()='%s']/preceding-sibling::th";
 	public static final String PAGINATION_PAGE_BY_INDEX = "xpath=//";
 	public static final String ALL_ROW_COUNTRY_EACH_PAGE = null;

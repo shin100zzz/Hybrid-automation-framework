@@ -9,11 +9,11 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import commons.BaseTest;
-import pageObjects.jQuery.dataTable.HomePageObject;
-import pageObjects.jQuery.dataTable.PageGeneratorManager;
+import commons.PageGeneratorManager;
+import pageObjects.jQuery.dataTable.Jquery_DataTable_HomePageObject;
 
-public class DataTable_DataGrid extends BaseTest {
-	HomePageObject homePage;
+public class Level_10_DataTable_DataGrid extends BaseTest {
+	Jquery_DataTable_HomePageObject homePage;
 	List<String> actualAllCountryValues;
 	List<String> expectedAllCountryValues;
 
@@ -21,7 +21,7 @@ public class DataTable_DataGrid extends BaseTest {
 	@BeforeClass
 	public void beforeClass(String browser, String url) {
 	  driver = getBrowserDriver(browser, url);
-	  homePage = PageGeneratorManager.getHomePage(driver);
+	  homePage = PageGeneratorManager.getHomePageOfjQueryDataTable(driver);
 	}
   
 	@Test
