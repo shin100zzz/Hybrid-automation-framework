@@ -11,7 +11,7 @@ import org.testng.annotations.Parameters;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 
-public class Element_Undisplay extends BaseTest {
+public class Level_13_Element_Undisplay extends BaseTest {
 	private LoginPageObject loginPage;
 	private WebDriver driver;
 

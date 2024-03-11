@@ -1,12 +1,14 @@
 package commons;
 
 import java.io.File;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.Assert;
@@ -15,9 +17,15 @@ import org.testng.Reporter;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
-	private WebDriver driverBaseTest;
+	private WebDriver driver;
 	private String projectPath = System.getProperty("user.dir");
 	private String osName = System.getProperty("os.name");
+	protected final Log log;
+	
+	// Constructor
+	protected BaseTest() {
+		log = LogFactory.getLog(getClass());
+	}
 	
 	public void delay(long time) {
 		 try {
@@ -28,50 +36,54 @@ public class BaseTest {
 		}
 	}
 	
+	public int generateFakeNumber() {
+		Random rand = new Random();
+		return rand.nextInt(1000);
+	}
 	protected WebDriver getBrowserDriver(String browserName) {
 		BrowserList browserList = BrowserList.valueOf(browserName.toUpperCase());
 		
 		if (osName.contains("Mac OS X")) {
 			if(browserList == BrowserList.CHROME) {
 				System.setProperty("webdriver.chrome.driver", projectPath + "//browserDrivers/chromedriver");		
-				driverBaseTest = new ChromeDriver();				
+				driver = new ChromeDriver();				
 			}else if(browserList == BrowserList.CHROME_SETUP) {
 				WebDriverManager.chromedriver().setup();
-				driverBaseTest = new ChromeDriver();				
+				driver = new ChromeDriver();				
 			}else if(browserList == BrowserList.CHROME_SETUP_VERSION) {
-				WebDriverManager.chromedriver().driverVersion("95.0.4638.17").setup();
-				driverBaseTest = new ChromeDriver();				
+				WebDriverManager.chromedriver().driverVersion("98.0.4758.102").setup();
+				driver = new ChromeDriver();				
 			}else if(browserList == BrowserList.H_CHROME) {
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("-headless");
 				options.addArguments("window-size=1920x1080");
-				driverBaseTest = new ChromeDriver(options);				
+				driver = new ChromeDriver(options);				
 			}else if(browserList == BrowserList.H_CHROME_SETUP) {
 				WebDriverManager.chromedriver().setup();
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("-headless");
 				options.addArguments("window-size=1920x1080");
-				driverBaseTest = new ChromeDriver(options);				
+				driver = new ChromeDriver(options);				
 			}else if(browserList == BrowserList.FIREFOX) {
 				System.setProperty("webdriver.gecko.driver", projectPath + "//browserDrivers/geckodriver");		
-				driverBaseTest = new FirefoxDriver();				
+				driver = new FirefoxDriver();				
 			}else if(browserList == BrowserList.FIREFOX_SETUP) {
 				WebDriverManager.firefoxdriver().setup();
-				driverBaseTest = new FirefoxDriver();				
+				driver = new FirefoxDriver();				
 			}else if(browserList == BrowserList.FIREFOX_SETUP_VERSION) {
 				WebDriverManager.firefoxdriver().driverVersion("95.0.4638.17").setup();
-				driverBaseTest = new FirefoxDriver();				
+				driver = new FirefoxDriver();				
 			}else if(browserList == BrowserList.H_FIREFOX) {
 				FirefoxOptions options = new FirefoxOptions();
 				options.addArguments("--headless");
 				options.addArguments("window-size=1920x1080");
-				driverBaseTest = new FirefoxDriver(options);			
+				driver = new FirefoxDriver(options);			
 			}else if(browserList == BrowserList.H_FIREFOX_SETUP) {
 				WebDriverManager.firefoxdriver().setup();
 				FirefoxOptions options = new FirefoxOptions();
 				options.addArguments("--headless");
 				options.addArguments("window-size=1920x1080");
-				driverBaseTest = new FirefoxDriver(options);				
+				driver = new FirefoxDriver(options);				
 			}else {
 				throw new RuntimeException("Browser name invalid");
 			}
@@ -79,52 +91,52 @@ public class BaseTest {
 		else { // Windows
 			if(browserList == BrowserList.CHROME) {
 				System.setProperty("webdriver.chrome.driver", projectPath + "//browserDrivers/chromedriver");		
-				driverBaseTest = new ChromeDriver();				
+				driver = new ChromeDriver();				
 			}else if(browserList == BrowserList.CHROME_SETUP) {
 				WebDriverManager.chromedriver().setup();
-				driverBaseTest = new ChromeDriver();				
+				driver = new ChromeDriver();				
 			}else if(browserList == BrowserList.CHROME_SETUP_VERSION) {
-				WebDriverManager.chromedriver().driverVersion("95.0.4638.17").setup();
-				driverBaseTest = new ChromeDriver();				
+				WebDriverManager.chromedriver().driverVersion("98.0.4758.102").setup();
+				driver = new ChromeDriver();				
 			}else if(browserList == BrowserList.H_CHROME) {
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("-headless");
 				options.addArguments("window-size=1920x1080");
-				driverBaseTest = new ChromeDriver(options);				
+				driver = new ChromeDriver(options);				
 			}else if(browserList == BrowserList.H_CHROME_SETUP) {
 				WebDriverManager.chromedriver().setup();
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("-headless");
 				options.addArguments("window-size=1920x1080");
-				driverBaseTest = new ChromeDriver(options);				
+				driver = new ChromeDriver(options);				
 			}else if(browserList == BrowserList.FIREFOX) {
 				System.setProperty("webdriver.gecko.driver", projectPath + "//browserDrivers/geckodriver");		
-				driverBaseTest = new FirefoxDriver();				
+				driver = new FirefoxDriver();				
 			}else if(browserList == BrowserList.FIREFOX_SETUP) {
 				WebDriverManager.firefoxdriver().setup();
-				driverBaseTest = new FirefoxDriver();				
+				driver = new FirefoxDriver();				
 			}else if(browserList == BrowserList.FIREFOX_SETUP_VERSION) {
 				WebDriverManager.firefoxdriver().driverVersion("95.0.4638.17").setup();
-				driverBaseTest = new FirefoxDriver();				
+				driver = new FirefoxDriver();				
 			}else if(browserList == BrowserList.H_FIREFOX) {
 				FirefoxOptions options = new FirefoxOptions();
 				options.addArguments("--headless");
 				options.addArguments("window-size=1920x1080");
-				driverBaseTest = new FirefoxDriver(options);			
+				driver = new FirefoxDriver(options);			
 			}else if(browserList == BrowserList.H_FIREFOX_SETUP) {
 				WebDriverManager.firefoxdriver().setup();
 				FirefoxOptions options = new FirefoxOptions();
 				options.addArguments("--headless");
 				options.addArguments("window-size=1920x1080");
-				driverBaseTest = new FirefoxDriver(options);				
+				driver = new FirefoxDriver(options);				
 			}else {
 				throw new RuntimeException("Browser name invalid");
 			}
 		}
 		
-		driverBaseTest.manage().timeouts().implicitlyWait(GlobalVariable.LONG_TIMEOUT, TimeUnit.SECONDS);
-		driverBaseTest.get(GlobalVariable.PORTAL_DEV_URL);
-		return driverBaseTest;
+		driver.manage().timeouts().implicitlyWait(GlobalVariable.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.get(GlobalVariable.PORTAL_DEV_URL);
+		return driver;
 	}
 	
 	protected WebDriver getBrowserDriver(String browserName, String url) {
@@ -133,44 +145,44 @@ public class BaseTest {
 		if (osName.contains("Mac OS X")) {
 			if(browserList == BrowserList.CHROME) {
 				System.setProperty("webdriver.chrome.driver", projectPath + File.separator+ "browserDrivers"+ File.separator+ "chromedriver");		
-				driverBaseTest = new ChromeDriver();				
+				driver = new ChromeDriver();				
 			}else if(browserList == BrowserList.CHROME_SETUP) {
 				WebDriverManager.chromedriver().setup();
-				driverBaseTest = new ChromeDriver();				
+				driver = new ChromeDriver();				
 			}else if(browserList == BrowserList.CHROME_SETUP_VERSION) {
-				WebDriverManager.chromedriver().driverVersion("95.0.4638.17").setup();
-				driverBaseTest = new ChromeDriver();				
+				WebDriverManager.chromedriver().driverVersion("98.0.4758.102").setup();
+				driver = new ChromeDriver();				
 			}else if(browserList == BrowserList.H_CHROME) {
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("-headless");
 				options.addArguments("window-size=1920x1080");
-				driverBaseTest = new ChromeDriver(options);				
+				driver = new ChromeDriver(options);				
 			}else if(browserList == BrowserList.H_CHROME_SETUP) {
 				WebDriverManager.chromedriver().setup();
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("-headless");
 				options.addArguments("window-size=1920x1080");
-				driverBaseTest = new ChromeDriver(options);				
+				driver = new ChromeDriver(options);				
 			}else if(browserList == BrowserList.FIREFOX) {
 				System.setProperty("webdriver.gecko.driver", projectPath + File.separator+ "browserDrivers"+ File.separator+ "geckodriver");		
-				driverBaseTest = new FirefoxDriver();				
+				driver = new FirefoxDriver();				
 			}else if(browserList == BrowserList.FIREFOX_SETUP) {
 				WebDriverManager.firefoxdriver().setup();
-				driverBaseTest = new FirefoxDriver();				
+				driver = new FirefoxDriver();				
 			}else if(browserList == BrowserList.FIREFOX_SETUP_VERSION) {
 				WebDriverManager.firefoxdriver().driverVersion("95.0.4638.17").setup();
-				driverBaseTest = new FirefoxDriver();				
+				driver = new FirefoxDriver();				
 			}else if(browserList == BrowserList.H_FIREFOX) {
 				FirefoxOptions options = new FirefoxOptions();
 				options.addArguments("--headless");
 				options.addArguments("window-size=1920x1080");
-				driverBaseTest = new FirefoxDriver(options);			
+				driver = new FirefoxDriver(options);			
 			}else if(browserList == BrowserList.H_FIREFOX_SETUP) {
 				WebDriverManager.firefoxdriver().setup();
 				FirefoxOptions options = new FirefoxOptions();
 				options.addArguments("--headless");
 				options.addArguments("window-size=1920x1080");
-				driverBaseTest = new FirefoxDriver(options);				
+				driver = new FirefoxDriver(options);				
 			}else {
 				throw new RuntimeException("Browser name invalid");
 			}
@@ -178,52 +190,52 @@ public class BaseTest {
 		else { // Windows
 			if(browserList == BrowserList.CHROME) {
 				System.setProperty("webdriver.chrome.driver", projectPath +File.separator+ "browserDrivers"+ File.separator+ "chromedriver");		
-				driverBaseTest = new ChromeDriver();				
+				driver = new ChromeDriver();				
 			}else if(browserList == BrowserList.CHROME_SETUP) {
 				WebDriverManager.chromedriver().setup();
-				driverBaseTest = new ChromeDriver();				
+				driver = new ChromeDriver();				
 			}else if(browserList == BrowserList.CHROME_SETUP_VERSION) {
-				WebDriverManager.chromedriver().driverVersion("95.0.4638.17").setup();
-				driverBaseTest = new ChromeDriver();				
+				WebDriverManager.chromedriver().driverVersion("98.0.4758.102").setup();
+				driver = new ChromeDriver();				
 			}else if(browserList == BrowserList.H_CHROME) {
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("-headless");
 				options.addArguments("window-size=1920x1080");
-				driverBaseTest = new ChromeDriver(options);				
+				driver = new ChromeDriver(options);				
 			}else if(browserList == BrowserList.H_CHROME_SETUP) {
 				WebDriverManager.chromedriver().setup();
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("-headless");
 				options.addArguments("window-size=1920x1080");
-				driverBaseTest = new ChromeDriver(options);				
+				driver = new ChromeDriver(options);				
 			}else if(browserList == BrowserList.FIREFOX) {
 				System.setProperty("webdriver.gecko.driver", projectPath + File.separator+ "browserDrivers"+ File.separator+ "geckodriver");		
-				driverBaseTest = new FirefoxDriver();				
+				driver = new FirefoxDriver();				
 			}else if(browserList == BrowserList.FIREFOX_SETUP) {
 				WebDriverManager.firefoxdriver().setup();
-				driverBaseTest = new FirefoxDriver();				
+				driver = new FirefoxDriver();				
 			}else if(browserList == BrowserList.FIREFOX_SETUP_VERSION) {
 				WebDriverManager.firefoxdriver().driverVersion("95.0.4638.17").setup();
-				driverBaseTest = new FirefoxDriver();				
+				driver = new FirefoxDriver();				
 			}else if(browserList == BrowserList.H_FIREFOX) {
 				FirefoxOptions options = new FirefoxOptions();
 				options.addArguments("--headless");
 				options.addArguments("window-size=1920x1080");
-				driverBaseTest = new FirefoxDriver(options);			
+				driver = new FirefoxDriver(options);			
 			}else if(browserList == BrowserList.H_FIREFOX_SETUP) {
 				WebDriverManager.firefoxdriver().setup();
 				FirefoxOptions options = new FirefoxOptions();
 				options.addArguments("--headless");
 				options.addArguments("window-size=1920x1080");
-				driverBaseTest = new FirefoxDriver(options);				
+				driver = new FirefoxDriver(options);				
 			}else {
 				throw new RuntimeException("Browser name invalid");
 			}
 		}
 		
-		driverBaseTest.manage().timeouts().implicitlyWait(GlobalVariable.LONG_TIMEOUT, TimeUnit.SECONDS);
-		driverBaseTest.get(url);
-		return driverBaseTest;
+		driver.manage().timeouts().implicitlyWait(GlobalVariable.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.get(url);
+		return driver;
 	}
 	
 	protected String getEnvironmentUr(String serverName) {
@@ -245,9 +257,9 @@ public class BaseTest {
 		boolean pass = true;
 		try {
 			Assert.assertTrue(condition);
-			System.out.println("---------------------- PASSED ----------------------");
+			log.info("---------------------- PASSED ----------------------");
 		} catch (Throwable e) {
-			System.out.println("---------------------- FAILED ----------------------");
+			log.info("---------------------- FAILED ----------------------");
 			pass = false;
 			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
 			Reporter.getCurrentTestResult().setThrowable(e);
@@ -259,9 +271,9 @@ public class BaseTest {
 		boolean pass = true;
 		try {
 			Assert.assertFalse(condition);
-			System.out.println("---------------------- PASSED ----------------------");
+			log.info("---------------------- PASSED ----------------------");
 		} catch (Throwable e) {
-			System.out.println("---------------------- FAILED ----------------------");
+			log.info("---------------------- FAILED ----------------------");
 			pass = false;
 			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
 			Reporter.getCurrentTestResult().setThrowable(e);
@@ -273,9 +285,9 @@ public class BaseTest {
 		boolean pass = true;
 		try {
 			Assert.assertEquals(actual, expected);
-			System.out.println("---------------------- PASSED ----------------------");
+			log.info("---------------------- PASSED ----------------------");
 		} catch (Throwable e) {
-			System.out.println("---------------------- FAILED ----------------------");
+			log.info("---------------------- FAILED ----------------------");
 			pass = false;
 			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
 			Reporter.getCurrentTestResult().setThrowable(e);
