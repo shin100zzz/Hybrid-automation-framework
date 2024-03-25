@@ -8,7 +8,7 @@ import pageUI.nopCommerce.user.HomePageUI;
 
 public class NopCommerce_User_HomePageObject extends BasePage{
 
-	WebDriver driver;
+	private WebDriver driver;
 
 	public NopCommerce_User_HomePageObject(WebDriver driver) {
 		this.driver = driver;
