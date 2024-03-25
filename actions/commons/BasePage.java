@@ -146,6 +146,7 @@ public class BasePage {
 		} else {
 			throw new RuntimeException("Locator type is not supported");
 		}
+		
 		return by;
 	}
 

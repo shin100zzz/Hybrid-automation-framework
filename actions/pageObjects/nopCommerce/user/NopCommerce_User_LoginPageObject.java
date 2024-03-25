@@ -2,9 +2,12 @@ package pageObjects.nopCommerce.user;
 
 import org.openqa.selenium.WebDriver;
 
-public class NopCommerce_User_LoginPageObject {
+import commons.BasePage;
+import pageUI.nopCommerce.user.LoginPageUI;
+
+public class NopCommerce_User_LoginPageObject extends BasePage{
 	
-	WebDriver driver;
+	private WebDriver driver;
 
 	public NopCommerce_User_LoginPageObject (WebDriver driver) {
 		this.driver = driver;
@@ -12,22 +15,27 @@ public class NopCommerce_User_LoginPageObject {
 	}
 
 	public void clickToLoginButton() {
-		// TODO Auto-generated method stub
-		
+//		waitForElementInVisible(driver, LoginPageUI.LOGIN_BUTON);
+		clickToElement(driver, LoginPageUI.LOGIN_BUTON);
 	}
 
-	public String RetErrorMessageAtEmailTextbox() {
-		// TODO Auto-generated method stub
-		return null;
+	public void inputToEmailTextBox(String email) {
+		waitForElementClickable(driver,LoginPageUI.EMAIL);
+		sendkeyToElement(driver,LoginPageUI.EMAIL,email);
 	}
 
-	public void inputToEmailTextBox(String emailAddress) {
-		// TODO Auto-generated method stub
-		
+	public void inputToPasswordTextBox(String password) {
+		waitForElementClickable(driver,LoginPageUI.PASSWORD);
+		sendkeyToElement(driver,LoginPageUI.PASSWORD,password);
 	}
 
-	public void inputToPasswordTextBox(String validPassword) {
-		// TODO Auto-generated method stub
-		
+	public String getErrorMessageAtEmailTextbox() {
+		waitForElementVisible(driver,LoginPageUI.EMAIL_ERROR_MESSAGE);
+		return getElementText(driver,LoginPageUI.EMAIL_ERROR_MESSAGE);
+	}
+
+	public String getErrorMessageUnsuccessfull() {
+		waitForElementVisible(driver,LoginPageUI.LOGIN_ERROR_MESSAGE);
+		return getElementText(driver,LoginPageUI.LOGIN_ERROR_MESSAGE);
 	}
 }

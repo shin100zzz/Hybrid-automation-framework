@@ -17,7 +17,7 @@ public class GlobalVariable {
 	public static final String DB_DEV_USER = "auto";
 	public static final String DB_DEV_PASS = "auto@ws123";
 	public static final long SHORT_TIMEOUT = 5;
-	public static final long LONG_TIMEOUT = 30;
+	public static final long LONG_TIMEOUT = 60;
 	public static final long RETRY_TEST_FAIL = 3;
 	
 	
