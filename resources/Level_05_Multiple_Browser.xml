@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="NopCommerce">
 
-	<test name="Run on CHROME">
+	<test name="Run on Headless CHROME">
 		<parameter name = "browser" value ="chrome"/>
 		<classes>
 			<class name="com.nopcommerce.user.Level_05_Multiple_Browser" />
 		</classes>
 	</test>
 	
-	<test name="Run on Firefox">
-		<parameter name = "browser" value ="firefox"/>
-		<classes>
-			<class name="com.nopcommerce.user.Level_05_Multiple_Browser" />
-		</classes>
-	</test>
-	
-	
-	<test name="Run on Edge">
-		<parameter name = "browser" value ="edge"/>
+<test name="Run on Firefox">
+		<parameter name = "browser" value ="Firefox"/>
 		<classes>
 			<class name="com.nopcommerce.user.Level_05_Multiple_Browser" />
 		</classes>

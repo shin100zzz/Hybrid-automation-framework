@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="NopCommerce">
+
+	<test name="Run on Edge">
+		<parameter name="browser" value="H_EDGE_SETUP" /> 
+		<classes>
+			<class name="com.nopcommerce.user.Level_06_Headless_Browser" />
+		</classes>
+	</test>
+	
+	<test name="Run on CHROME">
+		<parameter name="browser" value="H_Chrome" /> 
+		<classes>
+			<class name="com.nopcommerce.user.Level_06_Headless_Browser" />
+		</classes>
+	</test>
+	
+
+</suite> 
