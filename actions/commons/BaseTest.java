@@ -57,7 +57,7 @@ public class BaseTest {
 				WebDriverManager.chromedriver().setup();
 				driver = new ChromeDriver();				
 			}else if(browserList == BrowserList.CHROME_SETUP_VERSION) {
-				WebDriverManager.chromedriver().driverVersion("125.0.6422.60").setup();
+				WebDriverManager.chromedriver().driverVersion("130.0.6723.69").setup();
 				driver = new ChromeDriver();				
 			}else if(browserList == BrowserList.H_CHROME) {
 				System.setProperty("webdriver.chrome.driver", projectPath + "//browserDrivers/chromedriver");
@@ -130,7 +130,7 @@ public class BaseTest {
 				WebDriverManager.chromedriver().setup();
 				driver = new ChromeDriver();				
 			}else if(browserList == BrowserList.CHROME_SETUP_VERSION) {
-				WebDriverManager.chromedriver().driverVersion("125.0.6422.60").setup();
+				WebDriverManager.chromedriver().driverVersion("130.0.6723.69").setup();
 				driver = new ChromeDriver();				
 			}else if(browserList == BrowserList.H_CHROME) {
 				System.setProperty("webdriver.chrome.driver", projectPath + "\\browserDrivers\\chromedriver");	
@@ -188,7 +188,7 @@ public class BaseTest {
 				WebDriverManager.chromedriver().setup();
 				driver = new ChromeDriver();				
 			}else if(browserList == BrowserList.CHROME_SETUP_VERSION) {
-				WebDriverManager.chromedriver().driverVersion("125.0.6422.60").setup();
+				WebDriverManager.chromedriver().driverVersion("130.0.6723.69").setup();
 				driver = new ChromeDriver();				
 			}else if(browserList == BrowserList.H_CHROME) {
 				System.setProperty("webdriver.chrome.driver", projectPath + File.separator+ "browserDrivers"+ File.separator+ "chromedriver");
@@ -237,7 +237,7 @@ public class BaseTest {
 				WebDriverManager.chromedriver().setup();
 				driver = new ChromeDriver();				
 			}else if(browserList == BrowserList.CHROME_SETUP_VERSION) {
-				WebDriverManager.chromedriver().driverVersion("125.0.6422.60").setup();
+				WebDriverManager.chromedriver().driverVersion("130.0.6723.69").setup();
 				driver = new ChromeDriver();				
 			}else if(browserList == BrowserList.H_CHROME) {
 				System.setProperty("webdriver.chrome.driver", projectPath +File.separator+ "browserDrivers"+ File.separator+ "chromedriver");		

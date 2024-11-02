@@ -19,6 +19,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import commonPageUIs.BasePageUploadFileUI;
+import pageObjects.nopCommerce.admin.NopCommerce_Admin_LoginPageObject;
 import pageObjects.nopCommerce.user.NopCommerce_User_AddressPageObject;
 import pageObjects.nopCommerce.user.NopCommerce_User_CustomerInforPageObject;
 import pageObjects.nopCommerce.user.NopCommerce_User_MyProductReviewPageObject;
@@ -550,6 +551,12 @@ public class BasePage {
 		waitForElementClickable(driver, BasePageUI.REWARD_POINT_LINK);
 		clickToElement(driver, BasePageUI.REWARD_POINT_LINK);
 		return PageGeneratorManager.getUserRewardPointageOfnopCommerce(driver);
+	}
+	
+	public NopCommerce_Admin_LoginPageObject clickToLogoutLinkAdminPage(WebDriver driver) {
+		waitForElementClickable(driver, BasePageUI.LOGOUT_LINK_AT_ADMIN);
+		clickToElement(driver, BasePageUI.LOGOUT_LINK_AT_ADMIN);
+		return PageGeneratorManager.getAdminLoginPage(driver);
 	}
 
 }

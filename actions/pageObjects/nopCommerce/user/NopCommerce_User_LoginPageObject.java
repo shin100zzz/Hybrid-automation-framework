@@ -3,6 +3,7 @@ package pageObjects.nopCommerce.user;
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
+import commons.PageGeneratorManager;
 import pageUI.nopCommerce.user.LoginPageUI;
 
 public class NopCommerce_User_LoginPageObject extends BasePage{
@@ -14,9 +15,10 @@ public class NopCommerce_User_LoginPageObject extends BasePage{
 		
 	}
 
-	public void clickToLoginButton() {
-//		waitForElementInVisible(driver, LoginPageUI.LOGIN_BUTON);
+	public NopCommerce_User_HomePageObject clickToLoginButton() {
+		waitForElementInVisible(driver, LoginPageUI.LOGIN_BUTON);
 		clickToElement(driver, LoginPageUI.LOGIN_BUTON);
+		return PageGeneratorManager.getUserHomePageOfnopCommerce(driver);
 	}
 
 	public void inputToEmailTextBox(String email) {
@@ -38,4 +40,17 @@ public class NopCommerce_User_LoginPageObject extends BasePage{
 		waitForElementVisible(driver,LoginPageUI.LOGIN_ERROR_MESSAGE);
 		return getElementText(driver,LoginPageUI.LOGIN_ERROR_MESSAGE);
 	}
+
+	public String RetErrorMessageAtEmailTextbox() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public NopCommerce_User_HomePageObject loginAsUser(String email, String password) {
+		inputToEmailTextBox(email);
+		inputToPasswordTextBox(password);
+		return clickToLoginButton();
+		 
+	}
+
 }

@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 
 import pageObjects.facebook.LoginPageObject;
 import pageObjects.jQuery.dataTable.HomePageObject;
+import pageObjects.nopCommerce.admin.NopCommerce_Admin_DashboardPageObject;
+import pageObjects.nopCommerce.admin.NopCommerce_Admin_LoginPageObject;
 import pageObjects.nopCommerce.user.NopCommerce_User_AddressPageObject;
 import pageObjects.nopCommerce.user.NopCommerce_User_CustomerInforPageObject;
 import pageObjects.nopCommerce.user.NopCommerce_User_HomePageObject;
@@ -48,5 +50,13 @@ public class PageGeneratorManager {
 
 	public static NopCommerce_User_RewardPointPageObject getUserRewardPointageOfnopCommerce(WebDriver driver) {
 		return new NopCommerce_User_RewardPointPageObject(driver);
+	}
+	
+	public static NopCommerce_Admin_LoginPageObject getAdminLoginPage(WebDriver driver) {
+		return new NopCommerce_Admin_LoginPageObject(driver);
+	}
+	
+	public static NopCommerce_Admin_DashboardPageObject getAdminDashboardPage(WebDriver driver) {
+		return new NopCommerce_Admin_DashboardPageObject(driver);
 	}
 }
