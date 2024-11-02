@@ -62,51 +62,51 @@ public class Level_07_Switch_Page extends BaseTest {
 		homePage = registerPage.clickTologoutLink();
 	}
 
-//	@Test
-//	public void User_02_Login() {
-//		loginPage = homePage.clickTologinLink();
-//		loginPage.clickToLoginButton();
-//		
-//		loginPage = homePage.clickTologinLink();
-//		
-//		loginPage.inputToEmailTextBox(emailAddress);
-//		loginPage.inputToPasswordTextBox(validPassword);
-//	}
-//
-//	@Test
-//	public void User_03_Login_Customer_Infor() {
-//		customerInforPage = homePage.openMyAccount();
-//		Assert.assertTrue(customerInforPage.isCustomerInforPageDisplayed());
-//	} 
-//
-//	@Test
-//	public void User_04_Switch_Page() {
-//	// Knowledge của Page Object:
-//	// Một page A khi chuyển qua page B thì phái viết 1 hàm 
-//	// (action: open/ click/..: link/ button/ image/..) để mở page B đó lên
-//	
-//	// Customer Infor -> Address
-//	addressPage = customerInforPage.openAddressPage(driver);
-//	// Address -> My Product Review
-//	myProductReviewPage = addressPage.openMyProductReviewPage(driver);
-//	// My Product Review -> Reward Point
-//	rewardPointPage = myProductReviewPage.openRewardPoint(driver);
-//	// Reward Point -> Address
-//	addressPage = rewardPointPage.openAddressPage(driver);
-//	// Address -> Reward Point
-//	rewardPointPage = addressPage.openRewardPoint(driver);
-//	// Reward Point -> My Product Review
-//	myProductReviewPage = rewardPointPage.openMyProductReviewPage(driver);
-//	// My Product Review -> Address
-//	addressPage = myProductReviewPage.openAddressPage(driver);
-//	customerInforPage = addressPage.openCustomerInforPage(driver);
-//	myProductReviewPage = customerInforPage.openMyProductReviewPage(driver);
-//	
-//	}
-//	@Test
-//	public void User_05_Switch_Role() {
-//	// Role User -> Role Admin
-//	}
+	@Test
+	public void User_02_Login() {
+		loginPage = homePage.clickTologinLink();
+		loginPage.clickToLoginButton();
+		
+		loginPage = homePage.clickTologinLink();
+		
+		loginPage.inputToEmailTextBox(emailAddress);
+		loginPage.inputToPasswordTextBox(validPassword);
+	}
+
+	@Test
+	public void User_03_Login_Customer_Infor() {
+		customerInforPage = homePage.openMyAccount();
+		Assert.assertTrue(customerInforPage.isCustomerInforPageDisplayed());
+	} 
+
+	@Test
+	public void User_04_Switch_Page() {
+	// Knowledge của Page Object:
+	// Một page A khi chuyển qua page B thì phái viết 1 hàm 
+	// (action: open/ click/..: link/ button/ image/..) để mở page B đó lên
+	
+	// Customer Infor -> Address
+	addressPage = customerInforPage.openAddressPage(driver);
+	// Address -> My Product Review
+	myProductReviewPage = addressPage.openMyProductReviewPage(driver);
+	// My Product Review -> Reward Point
+	rewardPointPage = myProductReviewPage.openRewardPoint(driver);
+	// Reward Point -> Address
+	addressPage = rewardPointPage.openAddressPage(driver);
+	// Address -> Reward Point
+	rewardPointPage = addressPage.openRewardPoint(driver);
+	// Reward Point -> My Product Review
+	myProductReviewPage = rewardPointPage.openMyProductReviewPage(driver);
+	// My Product Review -> Address
+	addressPage = myProductReviewPage.openAddressPage(driver);
+	customerInforPage = addressPage.openCustomerInforPage(driver);
+	myProductReviewPage = customerInforPage.openMyProductReviewPage(driver);
+	
+	}
+	@Test
+	public void User_05_Switch_Role() {
+	// Role User -> Role Admin
+	}
 	
 	@AfterClass
 	public void afterClass() {
