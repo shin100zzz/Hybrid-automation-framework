@@ -14,7 +14,7 @@ import pageObjects.nopCommerce.user.NopCommerce_User_RegisterPageObject;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 
-public class Level_03_Register_Page_Object_Pattern{
+public class Level_03_Page_Object_Pattern_I_Register{
 	private WebDriver driver;
 	
 	String emailAddress,firstName,lastName,validPassword,invalidPassword;
@@ -33,7 +33,6 @@ public class Level_03_Register_Page_Object_Pattern{
 		driver.get("https://demo.nopcommerce.com");
 		
 		homePage = new NopCommerce_User_HomePageObject(driver);
-		registerPage = new NopCommerce_User_RegisterPageObject(driver);
 		
 		emailAddress = "test"+generateFakeNumber()+"@gmail.com";
 		firstName = "Automation";
@@ -46,8 +45,11 @@ public class Level_03_Register_Page_Object_Pattern{
 	public void Register_01_Empty_Data()
 	{
 		homePage.clickToRegisterLink();
+		// Click Register link nhảy qya trnag Register
+		registerPage = new NopCommerce_User_RegisterPageObject(driver);
+			
 		registerPage.clickToRegisterButton();
-		
+
 		Assert.assertEquals(registerPage.getErrorMessageAtFirstnameTextbox(), "First name is required.");
 		Assert.assertEquals(registerPage.getErrorMessageAtLastnameTextbox(), "Last name is required.");
 		Assert.assertEquals(registerPage.getErrorMessageAtEmailTextbox(), "Email is required.");
@@ -59,6 +61,8 @@ public class Level_03_Register_Page_Object_Pattern{
 	public void Register_02_Invalid_Email()
 	{
 		homePage.clickToRegisterLink();
+		// Click Register link nhảy qya trnag Register
+		registerPage = new NopCommerce_User_RegisterPageObject(driver);
 		
 		registerPage.inputTofirstnameTextbox(firstName); 
 		registerPage.inputTolastnameTextbo(lastName); 
@@ -74,6 +78,8 @@ public class Level_03_Register_Page_Object_Pattern{
 	public void Register_03_Success()
 	{
 		homePage.clickToRegisterLink();
+		// Click Register link nhảy qya trnag Register
+		registerPage = new NopCommerce_User_RegisterPageObject(driver);
 		
 		registerPage.inputTofirstnameTextbox(firstName); 
 		registerPage.inputTolastnameTextbo(lastName); 
@@ -91,6 +97,8 @@ public class Level_03_Register_Page_Object_Pattern{
 	public void Register_04_Existing_Email()
 	{
 		homePage.clickToRegisterLink();
+		// Click Register link nhảy qya trnag Register
+		registerPage = new NopCommerce_User_RegisterPageObject(driver);
 		
 		registerPage.inputTofirstnameTextbox(firstName); 
 		registerPage.inputTolastnameTextbo(lastName); 
@@ -106,6 +114,8 @@ public class Level_03_Register_Page_Object_Pattern{
 	public void Register_05_Password_Less_Than_6_Chars()
 	{
 		homePage.clickToRegisterLink();
+		// Click Register link nhảy qya trnag Register
+		registerPage = new NopCommerce_User_RegisterPageObject(driver);
 		
 		registerPage.inputTofirstnameTextbox(firstName); 
 		registerPage.inputTolastnameTextbo(lastName); 
@@ -121,6 +131,8 @@ public class Level_03_Register_Page_Object_Pattern{
 	public void Register_06_Invalid_ConfirmPassword()
 	{
 		homePage.clickToRegisterLink();
+		// Click Register link nhảy qya trnag Register
+		registerPage = new NopCommerce_User_RegisterPageObject(driver);
 		
 		registerPage.inputTofirstnameTextbox(firstName); 
 		registerPage.inputTolastnameTextbo(lastName); 
