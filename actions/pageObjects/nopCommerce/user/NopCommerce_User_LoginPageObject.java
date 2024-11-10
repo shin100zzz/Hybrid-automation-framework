@@ -15,7 +15,6 @@ public class NopCommerce_User_LoginPageObject extends BasePage{
 	// Hàm này được gọi tên là Constructor
 	public NopCommerce_User_LoginPageObject (WebDriver driver) {
 		this.driver = driver;
-		
 	}
 
 	public void clickToLoginButton() {
