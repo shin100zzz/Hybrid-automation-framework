@@ -8,8 +8,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import pageObjects.nopCommerce.user.NopCommerce_User_HomePageObject;
-import pageObjects.nopCommerce.user.NopCommerce_User_RegisterPageObject;
+import pageObjects.nopCommerce.user.HomePageObject_Nop;
+import pageObjects.nopCommerce.user.RegisterPageObject_Nop;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -19,8 +19,8 @@ public class Level_03_Page_Object_Pattern_I_Register{
 	
 	String emailAddress,firstName,lastName,validPassword,invalidPassword;
 	
-	private NopCommerce_User_HomePageObject homePage;
-	private NopCommerce_User_RegisterPageObject registerPage ;
+	private HomePageObject_Nop homePage;
+	private RegisterPageObject_Nop registerPage ;
 	String projectPath = System.getProperty("user.dir");
 	
 	@BeforeClass
@@ -32,7 +32,7 @@ public class Level_03_Page_Object_Pattern_I_Register{
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.get("https://demo.nopcommerce.com");
 		
-		homePage = new NopCommerce_User_HomePageObject(driver);
+		homePage = new HomePageObject_Nop(driver);
 		
 		emailAddress = "test"+generateFakeNumber()+"@gmail.com";
 		firstName = "Automation";
@@ -46,7 +46,7 @@ public class Level_03_Page_Object_Pattern_I_Register{
 	{
 		homePage.clickToRegisterLink();
 		// Click Register link nhảy qya trnag Register
-		registerPage = new NopCommerce_User_RegisterPageObject(driver);
+		registerPage = new RegisterPageObject_Nop(driver);
 			
 		registerPage.clickToRegisterButton();
 
@@ -62,7 +62,7 @@ public class Level_03_Page_Object_Pattern_I_Register{
 	{
 		homePage.clickToRegisterLink();
 		// Click Register link nhảy qya trnag Register
-		registerPage = new NopCommerce_User_RegisterPageObject(driver);
+		registerPage = new RegisterPageObject_Nop(driver);
 		
 		registerPage.inputTofirstnameTextbox(firstName); 
 		registerPage.inputTolastnameTextbo(lastName); 
@@ -79,7 +79,7 @@ public class Level_03_Page_Object_Pattern_I_Register{
 	{
 		homePage.clickToRegisterLink();
 		// Click Register link nhảy qya trnag Register
-		registerPage = new NopCommerce_User_RegisterPageObject(driver);
+		registerPage = new RegisterPageObject_Nop(driver);
 		
 		registerPage.inputTofirstnameTextbox(firstName); 
 		registerPage.inputTolastnameTextbo(lastName); 
@@ -98,7 +98,7 @@ public class Level_03_Page_Object_Pattern_I_Register{
 	{
 		homePage.clickToRegisterLink();
 		// Click Register link nhảy qya trnag Register
-		registerPage = new NopCommerce_User_RegisterPageObject(driver);
+		registerPage = new RegisterPageObject_Nop(driver);
 		
 		registerPage.inputTofirstnameTextbox(firstName); 
 		registerPage.inputTolastnameTextbo(lastName); 
@@ -115,7 +115,7 @@ public class Level_03_Page_Object_Pattern_I_Register{
 	{
 		homePage.clickToRegisterLink();
 		// Click Register link nhảy qya trnag Register
-		registerPage = new NopCommerce_User_RegisterPageObject(driver);
+		registerPage = new RegisterPageObject_Nop(driver);
 		
 		registerPage.inputTofirstnameTextbox(firstName); 
 		registerPage.inputTolastnameTextbo(lastName); 
@@ -132,7 +132,7 @@ public class Level_03_Page_Object_Pattern_I_Register{
 	{
 		homePage.clickToRegisterLink();
 		// Click Register link nhảy qya trnag Register
-		registerPage = new NopCommerce_User_RegisterPageObject(driver);
+		registerPage = new RegisterPageObject_Nop(driver);
 		
 		registerPage.inputTofirstnameTextbox(firstName); 
 		registerPage.inputTolastnameTextbo(lastName); 
