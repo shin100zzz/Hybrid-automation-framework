@@ -1,6 +1,6 @@
 package pageUI.nopCommerce.user;
 
-public class LoginPageUI {
+public class LoginPageUI_Nop {
 
 	public static final String LOGIN_BUTON = "xpath=//div/button[@type='submit']";
 	public static final String EMAIL = "xpath=//input[@id='Email']";

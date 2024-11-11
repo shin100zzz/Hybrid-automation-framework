@@ -8,9 +8,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import pageObjects.nopCommerce.user.NopCommerce_User_HomePageObject;
-import pageObjects.nopCommerce.user.NopCommerce_User_LoginPageObject;
-import pageObjects.nopCommerce.user.NopCommerce_User_RegisterPageObject;
+import pageObjects.nopCommerce.user.HomePageObject_Nop;
+import pageObjects.nopCommerce.user.LoginPageObject_Nop;
+import pageObjects.nopCommerce.user.RegisterPageObject_Nop;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -21,9 +21,9 @@ public class Level_03_Page_Object_Pattern_III_Login{
 	String emailAddress,firstName,lastName,validPassword,invalidPassword,inValidemailAddress;
 	
 	String projectPath = System.getProperty("user.dir");
-	private NopCommerce_User_HomePageObject homePage;
-	private NopCommerce_User_RegisterPageObject registerPage ;
-	private NopCommerce_User_LoginPageObject loginPage;
+	private HomePageObject_Nop homePage;
+	private RegisterPageObject_Nop registerPage ;
+	private LoginPageObject_Nop loginPage;
 	
 	@BeforeClass
 	public void beforeClass()
@@ -41,9 +41,9 @@ public class Level_03_Page_Object_Pattern_III_Login{
 		invalidPassword = "321";
 		
 		// Precondition
-		homePage = new NopCommerce_User_HomePageObject(driver);
+		homePage = new HomePageObject_Nop(driver);
 		homePage.clickToRegisterLink();
-		registerPage = new NopCommerce_User_RegisterPageObject(driver);
+		registerPage = new RegisterPageObject_Nop(driver);
 		
 		registerPage.inputTofirstnameTextbox(firstName); 
 		registerPage.inputTolastnameTextbo(lastName); 
@@ -56,14 +56,14 @@ public class Level_03_Page_Object_Pattern_III_Login{
 		
 		registerPage.clickTologoutLink();
 		// Click Logout thì sẽ quay về trang home
-		homePage = new NopCommerce_User_HomePageObject(driver);
+		homePage = new HomePageObject_Nop(driver);
 	}
 	
 	@Test
 	public void TC_01_Login_Empty_Data(){
 		homePage.clickTologinLink();
 		
-		loginPage = new NopCommerce_User_LoginPageObject(driver);
+		loginPage = new LoginPageObject_Nop(driver);
 		
 		loginPage.clickToLoginButton();
 		
@@ -75,7 +75,7 @@ public class Level_03_Page_Object_Pattern_III_Login{
 	public void TC_02_Login_Invalid_Email(){
 		homePage.clickTologinLink();
 		
-		loginPage = new NopCommerce_User_LoginPageObject(driver);
+		loginPage = new LoginPageObject_Nop(driver);
 		
 		loginPage.inputToEmailTextBox("2345@@fdd.com");
 		loginPage.inputToPasswordTextBox(validPassword);
@@ -89,7 +89,7 @@ public class Level_03_Page_Object_Pattern_III_Login{
 	public void TC_03_Login_Email_Not_Found(){
 		homePage.clickTologinLink();
 		
-		loginPage = new NopCommerce_User_LoginPageObject(driver);
+		loginPage = new LoginPageObject_Nop(driver);
 		
 		loginPage.inputToEmailTextBox("2345@fdd.com");
 		loginPage.inputToPasswordTextBox(validPassword);
@@ -103,7 +103,7 @@ public class Level_03_Page_Object_Pattern_III_Login{
 	public void TC_04_Login_Existing_Email_Empty_Password(){
 		homePage.clickTologinLink();
 		
-		loginPage = new NopCommerce_User_LoginPageObject(driver);
+		loginPage = new LoginPageObject_Nop(driver);
 		
 		loginPage.inputToEmailTextBox(emailAddress);
 		
@@ -116,7 +116,7 @@ public class Level_03_Page_Object_Pattern_III_Login{
 	public void TC_05_Login_Existing_Email_Incorrect_Password(){
 		homePage.clickTologinLink();
 		
-		loginPage = new NopCommerce_User_LoginPageObject(driver);
+		loginPage = new LoginPageObject_Nop(driver);
 		
 		loginPage.inputToEmailTextBox(emailAddress);
 		loginPage.inputToPasswordTextBox("343543423");
@@ -132,7 +132,7 @@ public class Level_03_Page_Object_Pattern_III_Login{
 		homePage.clickTologinLink();
 		
 		// Từ trang Home click Login link qua trang Login
-		loginPage = new NopCommerce_User_LoginPageObject(driver);
+		loginPage = new LoginPageObject_Nop(driver);
 		
 		loginPage.inputToEmailTextBox(emailAddress);
 		loginPage.inputToPasswordTextBox(validPassword);
