@@ -1,14 +1,8 @@
 package com.nopcommerce.user;
 
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -18,14 +12,17 @@ import commons.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 
-public class Level_04_Multiple_Browser extends BaseTest {
+public class Level_04_Multiple_Browser extends BaseTest{
 	WebDriver driver;
-	// Bắt buộc phải chạy từ file xml
+	String projectPath = System.getProperty("user.dir");
+	String emailAddress;
+	
 	@Parameters("browser")
 	@BeforeClass
-	public void beforeClass(String browserName)
+	public void beforeClass(String browser)
 	{
-		driver = getBrowserDriver(browserName);
+		driver = getBrowserDriver(browser);
+		emailAddress = "test"+generateFakeNumber()+"@gmail.com";
 	}
 	
 	@Test
@@ -36,7 +33,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
 		Assert.assertEquals(driver.findElement(By.cssSelector("span#FirstName-error")).getText(), "First name is required.");
 		Assert.assertEquals(driver.findElement(By.cssSelector("span#LastName-error")).getText(),"Last name is required.");
 		Assert.assertEquals(driver.findElement(By.cssSelector("span#Email-error")).getText(), "Email is required.");
-		Assert.assertEquals(driver.findElement(By.cssSelector("span#Password-error")).getText(), "Password is required.");
+		Assert.assertEquals(driver.findElement(By.cssSelector("span#Password-error")).getText(), "Password is required."); // Not use 
 		Assert.assertEquals(driver.findElement(By.cssSelector("span#ConfirmPassword-error")).getText(), "Password is required.");
 	}
 	
@@ -50,8 +47,9 @@ public class Level_04_Multiple_Browser extends BaseTest {
 		driver.findElement(By.cssSelector("input#Password")).sendKeys("123456"); 
 		driver.findElement(By.cssSelector("input#ConfirmPassword")).sendKeys ("123456"); 
 		driver.findElement(By.cssSelector("button#register-button")).click();
-		Assert.assertEquals(driver.findElement(By.cssSelector("span#Email-error")).getText(), "Wrong email");
+		Assert.assertEquals(driver.findElement(By.cssSelector("span#Email-error")).getText(), "Please enter a valid email address.");
 	}
+	
 	
 	@AfterClass
 	public void AfterClass()
@@ -59,8 +57,5 @@ public class Level_04_Multiple_Browser extends BaseTest {
 		
 	}
 	
-	public int generateFakeNumber() {
-		Random rand = new Random();
-		return rand.nextInt(9999);
-	}
+
 }
