@@ -3,6 +3,7 @@ package pageObjects.nopCommerce.user;
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
+import commons.PageGeneratorManager;
 import pageUI.nopCommerce.user.HomePageUI_Nop;
 import pageUI.nopCommerce.user.LoginPageUI_Nop;
 
@@ -22,15 +23,22 @@ public class HomePageObject_Nop extends BasePage{
 		waitForElementInVisible(driver, LoginPageUI_Nop.LOGIN_BUTON);
 		clickToElement(driver, LoginPageUI_Nop.LOGIN_BUTON);
 	}
-	
-	public void clickToRegisterLink() {
-		waitForElementClickable(driver, HomePageUI_Nop.REGISTER_LINK);
-		clickToElement(driver, HomePageUI_Nop.REGISTER_LINK);
-	}
-
-	public void clickTologinLink() {
+	public LoginPageObject_Nop openLoginPage() {
 		waitForElementClickable(driver, HomePageUI_Nop.LOGIN_LINK);
 		clickToElement(driver, HomePageUI_Nop.LOGIN_LINK);
+		return PageGeneratorManager.getUserLoginPageOfnopCommerce(driver);
+	} 
+
+	public LoginPageObject_Nop clickTologinLink() {
+		waitForElementClickable(driver, HomePageUI_Nop.LOGIN_LINK);
+		clickToElement(driver, HomePageUI_Nop.LOGIN_LINK);
+		return PageGeneratorManager.getUserLoginPageOfnopCommerce(driver);
+	}
+
+	public RegisterPageObject_Nop clickToRegisterLink() {
+		waitForElementClickable(driver, HomePageUI_Nop.REGISTER_LINK);
+		clickToElement(driver, HomePageUI_Nop.REGISTER_LINK);
+		return PageGeneratorManager.getUserRegisterPageOfnopCommerce(driver);
 	}
 
 	public boolean isMyAccountLinkDisplayed() {
@@ -38,16 +46,4 @@ public class HomePageObject_Nop extends BasePage{
 		return isElementDisplayed(driver, HomePageUI_Nop.MY_ACCOUNT_LINK);
 		}
 
-	public void openMyAccount() {
-		waitForElementClickable(driver, HomePageUI_Nop.MY_ACCOUNT_LINK);
-		clickToElement(driver, HomePageUI_Nop.MY_ACCOUNT_LINK);
-	}
-
-	public void openLoginPage() {
-		waitForElementClickable(driver, HomePageUI_Nop.LOGIN_LINK);
-		clickToElement(driver, HomePageUI_Nop.LOGIN_LINK);
-	}
-	
-
-	
 }

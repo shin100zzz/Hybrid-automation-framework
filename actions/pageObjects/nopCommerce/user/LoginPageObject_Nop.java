@@ -3,6 +3,7 @@ package pageObjects.nopCommerce.user;
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
+import commons.PageGeneratorManager;
 import pageUI.nopCommerce.user.LoginPageUI_Nop;
 
 public class LoginPageObject_Nop extends BasePage{
@@ -17,9 +18,10 @@ public class LoginPageObject_Nop extends BasePage{
 		this.driver = driver;
 	}
 
-	public void clickToLoginButton() {
+	public HomePageObject_Nop clickToLoginButton() {
 		waitForElementInVisible(driver, LoginPageUI_Nop.LOGIN_BUTON);
 		clickToElement(driver, LoginPageUI_Nop.LOGIN_BUTON);
+		return PageGeneratorManager.getUserHomePageOfnopCommerce(driver);
 	}
 
 	public void inputToEmailTextBox(String email) {
@@ -43,9 +45,7 @@ public class LoginPageObject_Nop extends BasePage{
 	}
 
 	public String RetErrorMessageAtEmailTextbox() {
-		waitForElementVisible(driver,LoginPageUI_Nop.LOGIN_ERROR_MESSAGE);
-		return getElementText(driver,LoginPageUI_Nop.LOGIN_ERROR_MESSAGE);
+		waitForElementVisible(driver,LoginPageUI_Nop.RE_ERROR_MESSAGE);
+		return getElementText(driver,LoginPageUI_Nop.RE_ERROR_MESSAGE);
 	}
-
-
 }
