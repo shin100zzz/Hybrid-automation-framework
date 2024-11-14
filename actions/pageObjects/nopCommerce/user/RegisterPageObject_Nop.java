@@ -1,9 +1,10 @@
-
 package pageObjects.nopCommerce.user;
 
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
+import commons.PageGeneratorManager;
+import pageUI.nopCommerce.user.LoginPageUI_Nop;
 import pageUI.nopCommerce.user.RegisterPageUI_Nop;
 
 public class RegisterPageObject_Nop extends BasePage {
@@ -15,6 +16,12 @@ public class RegisterPageObject_Nop extends BasePage {
 	// Hàm này được gọi tên là Constructor
 	public RegisterPageObject_Nop(WebDriver driver) {
 		this.driver = driver;
+	}
+	
+	public HomePageObject_Nop clickTologoutLink() {
+		waitForElementInVisible(driver, LoginPageUI_Nop.LOGOUT_LINK);
+		clickToElement(driver, LoginPageUI_Nop.LOGOUT_LINK);
+		return PageGeneratorManager.getHomePage(driver);
 	}
 	
 	public void inputTofirstnameTextbox(String firstName) {
@@ -50,11 +57,6 @@ public class RegisterPageObject_Nop extends BasePage {
 	public String getRegisterSuccessMessage() {
 		waitForElementVisible(driver,RegisterPageUI_Nop.REGISTER_RESULT_MESSAGE);
 		return getElementText(driver,RegisterPageUI_Nop.REGISTER_RESULT_MESSAGE);
-	}
-	
-	public void clickTologoutLink() {
-		waitForElementClickable(driver,RegisterPageUI_Nop.LOGOUT_BUTTON);
-		clickToElement(driver,RegisterPageUI_Nop.LOGOUT_BUTTON);
 	}
 	
 	public String getErrorMessageAtFirstnameTextbox() {
