@@ -18,6 +18,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import pageObjects.nopCommerce.user.AddressPageObject_Nop;
+import pageObjects.nopCommerce.user.CustomerInforPageObject_Nop;
+import pageObjects.nopCommerce.user.MyProductReviewPageObject_Nop;
+import pageObjects.nopCommerce.user.RewardPointPageObject_Nop;
+import pageUI.nopCommerce.user.BasePageUI;
+
 
 public class BasePage {
 	WebDriver driver;
@@ -508,6 +514,30 @@ public class BasePage {
 		explicitWait = new WebDriverWait(driver, 30);
 		explicitWait.until(
 				ExpectedConditions.elementToBeClickable(getByLocator(getDynamicXpath(locatorType, dynamicValues))));
+	}
+	
+	public AddressPageObject_Nop openAddressPage(WebDriver driver) {
+		waitForElementClickable(driver, BasePageUI.ADDRESS_LINK);
+		clickToElement(driver, BasePageUI.ADDRESS_LINK);
+		return PageGeneratorManager.getAddressPageOfnopCommerce(driver);
+	}
+	
+	public CustomerInforPageObject_Nop openCustomerInforPage(WebDriver driver) {
+		waitForElementClickable(driver, BasePageUI.CUSTOMER_INFOR_LINK);
+		clickToElement(driver, BasePageUI.CUSTOMER_INFOR_LINK);
+		return PageGeneratorManager.getUserCustomerInforPageOfnopCommerce(driver);
+	}
+
+	public MyProductReviewPageObject_Nop openMyProductReviewPage(WebDriver driver) {
+		waitForElementClickable(driver, BasePageUI.MY_PRODUCT_REVIEW_LINK);
+		clickToElement(driver, BasePageUI.MY_PRODUCT_REVIEW_LINK);
+		return PageGeneratorManager.getMyProductReviewPageOfnopCommerce(driver);
+	}
+
+	public RewardPointPageObject_Nop openRewardPoint(WebDriver driver) {
+		waitForElementClickable(driver, BasePageUI.REWARD_POINT_LINK);
+		clickToElement(driver, BasePageUI.REWARD_POINT_LINK);
+		return PageGeneratorManager.getRewardPointageOfnopCommerce(driver);
 	}
 
 }

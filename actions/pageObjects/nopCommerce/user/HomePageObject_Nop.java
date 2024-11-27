@@ -46,4 +46,10 @@ public class HomePageObject_Nop extends BasePage{
 		return isElementDisplayed(driver, HomePageUI_Nop.MY_ACCOUNT_LINK);
 		}
 
+	public CustomerInforPageObject_Nop openMyAccount() {
+		waitForElementClickable(driver, HomePageUI_Nop.MY_ACCOUNT_LINK);
+		clickToElement(driver,HomePageUI_Nop.MY_ACCOUNT_LINK);
+		return PageGeneratorManager.getUserCustomerInforPageOfnopCommerce(driver);
+	}
+
 }
