@@ -1,6 +1,6 @@
 package pageUI.nopCommerce.user;
 
-public class RegisterPageUI_Nop {
+public class UserRegisterPageUI {
 
 	public static final String FIRST_NAME="xpath=//input[@id='FirstName']";
 	public static final String LAST_NAME="xpath=//input[@id='LastName']";

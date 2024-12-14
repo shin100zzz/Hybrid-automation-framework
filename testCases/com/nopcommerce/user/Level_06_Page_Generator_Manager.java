@@ -9,9 +9,9 @@ import org.testng.annotations.Test;
 
 import commons.BaseTest;
 import commons.PageGeneratorManager;
-import pageObjects.nopCommerce.user.HomePageObject_Nop;
-import pageObjects.nopCommerce.user.LoginPageObject_Nop;
-import pageObjects.nopCommerce.user.RegisterPageObject_Nop;
+import pageObjects.nopCommerce.user.UserHomePageObject;
+import pageObjects.nopCommerce.user.UserLoginPageObject;
+import pageObjects.nopCommerce.user.UserRegisterPageObject;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -22,16 +22,16 @@ public class Level_06_Page_Generator_Manager extends BaseTest{
 	String emailAddress,firstName,lastName,validPassword,invalidPassword,inValidemailAddress;
 	
 	String projectPath = System.getProperty("user.dir");
-	private HomePageObject_Nop homePage;
-	private RegisterPageObject_Nop registerPage ;
-	private LoginPageObject_Nop loginPage;
+	private UserHomePageObject homePage;
+	private UserRegisterPageObject registerPage ;
+	private UserLoginPageObject loginPage;
 	
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browser)
 	{
 		driver = getBrowserDriver(browser);
-		homePage = PageGeneratorManager.getHomePage(driver);
+		homePage = PageGeneratorManager.getUserHomePageOfnopCommerce(driver);
 		emailAddress = "test"+generateFakeNumber()+"@gmail.com";
 		firstName = "Automation";
 		lastName = "FC";
