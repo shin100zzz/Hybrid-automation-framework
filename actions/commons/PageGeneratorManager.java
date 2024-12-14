@@ -2,49 +2,52 @@ package commons;
 
 import org.openqa.selenium.WebDriver;
 
-import pageObjects.nopCommerce.user.AddressPageObject_Nop;
-import pageObjects.nopCommerce.user.CustomerInforPageObject_Nop;
-import pageObjects.nopCommerce.user.HomePageObject_Nop;
-import pageObjects.nopCommerce.user.RegisterPageObject_Nop;
-import pageObjects.nopCommerce.user.RewardPointPageObject_Nop;
-import pageObjects.nopCommerce.user.LoginPageObject_Nop;
-import pageObjects.nopCommerce.user.MyProductReviewPageObject_Nop;
+import pageObjects.nopCommerce.admin.AdminDashboardPageObject;
+import pageObjects.nopCommerce.admin.AdminLoginPageObject;
+import pageObjects.nopCommerce.user.UserAddressPageObject;
+import pageObjects.nopCommerce.user.UserCustomerInforPageObject;
+import pageObjects.nopCommerce.user.UserHomePageObject;
+import pageObjects.nopCommerce.user.UserRegisterPageObject;
+import pageObjects.nopCommerce.user.UserRewardPointPageObject;
+import pageObjects.nopCommerce.user.UserLoginPageObject;
+import pageObjects.nopCommerce.user.UserMyProductReviewPageObject;
 
 public class PageGeneratorManager {
 	
-	public static HomePageObject_Nop getHomePage(WebDriver driver) {
-		return new HomePageObject_Nop(driver);
+	public static UserHomePageObject getUserHomePageOfnopCommerce(WebDriver driver) {
+		return new UserHomePageObject(driver);
 	}
 	
-	public static HomePageObject_Nop getUserHomePageOfnopCommerce(WebDriver driver) {
-		return new HomePageObject_Nop(driver);
-	}
-	
-	public static LoginPageObject_Nop getLoginPage(WebDriver driver) {
-		return new LoginPageObject_Nop(driver);
+	public static UserLoginPageObject getUserLoginPageOfnopCommerce(WebDriver driver) {
+		return new UserLoginPageObject(driver);
 	}
 
-	public static LoginPageObject_Nop getUserLoginPageOfnopCommerce(WebDriver driver) {
-		return new LoginPageObject_Nop(driver);
+	public static UserRegisterPageObject getUserRegisterPageOfnopCommerce(WebDriver driver) {
+		return new UserRegisterPageObject(driver);
 	}
 
-	public static RegisterPageObject_Nop getUserRegisterPageOfnopCommerce(WebDriver driver) {
-		return new RegisterPageObject_Nop(driver);
-	}
-
-	public static CustomerInforPageObject_Nop getUserCustomerInforPageOfnopCommerce(WebDriver driver) {
-		return new CustomerInforPageObject_Nop(driver);
+	public static UserCustomerInforPageObject getUserCustomerInforPageOfnopCommerce(WebDriver driver) {
+		return new UserCustomerInforPageObject(driver);
 	}
 	
-	public static AddressPageObject_Nop getAddressPageOfnopCommerce(WebDriver driver) {
-		return new AddressPageObject_Nop(driver);
+	public static UserAddressPageObject getUserAddressPageOfnopCommerce(WebDriver driver) {
+		return new UserAddressPageObject(driver);
 	}
 	
-	public static MyProductReviewPageObject_Nop getMyProductReviewPageOfnopCommerce(WebDriver driver) {
-		return new MyProductReviewPageObject_Nop(driver);
+	public static UserMyProductReviewPageObject getUserMyProductReviewPageOfnopCommerce(WebDriver driver) {
+		return new UserMyProductReviewPageObject(driver);
 	}
 	
-	public static RewardPointPageObject_Nop getRewardPointageOfnopCommerce(WebDriver driver) {
-		return new RewardPointPageObject_Nop(driver);
+	public static UserRewardPointPageObject getUserRewardPointageOfnopCommerce(WebDriver driver) {
+		return new UserRewardPointPageObject(driver);
 	}
+	
+	public static AdminLoginPageObject getAdminLoginPageOfnopCommerce(WebDriver driver) {
+		return new AdminLoginPageObject(driver);
+	}
+	
+	public static AdminDashboardPageObject getAdminDashboardPageOfnopCommerce(WebDriver driver) {
+		return new AdminDashboardPageObject(driver);
+	}
+	
 }

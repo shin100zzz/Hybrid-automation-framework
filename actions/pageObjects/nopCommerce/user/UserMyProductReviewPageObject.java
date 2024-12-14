@@ -4,10 +4,10 @@ import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
 
-public class MyAccountPageObject_Nop extends BasePage {
+public class UserMyProductReviewPageObject extends BasePage {
 	WebDriver driver;
-	
-	public MyAccountPageObject_Nop(WebDriver driver) {
+
+	public UserMyProductReviewPageObject(WebDriver driver) {
 		this.driver = driver;
 	}
 

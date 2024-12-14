@@ -18,11 +18,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import pageObjects.nopCommerce.user.AddressPageObject_Nop;
-import pageObjects.nopCommerce.user.CustomerInforPageObject_Nop;
-import pageObjects.nopCommerce.user.MyProductReviewPageObject_Nop;
-import pageObjects.nopCommerce.user.RewardPointPageObject_Nop;
-import pageUI.nopCommerce.user.BasePageUI;
+import pageObjects.nopCommerce.admin.AdminDashboardPageObject;
+import pageObjects.nopCommerce.admin.AdminLoginPageObject;
+import pageObjects.nopCommerce.user.UserAddressPageObject;
+import pageObjects.nopCommerce.user.UserCustomerInforPageObject;
+import pageObjects.nopCommerce.user.UserHomePageObject;
+import pageObjects.nopCommerce.user.UserMyProductReviewPageObject;
+import pageObjects.nopCommerce.user.UserRewardPointPageObject;
+import pageUI.nopCommerce.user.UserBasePageUI;
 
 
 public class BasePage {
@@ -516,28 +519,40 @@ public class BasePage {
 				ExpectedConditions.elementToBeClickable(getByLocator(getDynamicXpath(locatorType, dynamicValues))));
 	}
 	
-	public AddressPageObject_Nop openAddressPage(WebDriver driver) {
-		waitForElementClickable(driver, BasePageUI.ADDRESS_LINK);
-		clickToElement(driver, BasePageUI.ADDRESS_LINK);
-		return PageGeneratorManager.getAddressPageOfnopCommerce(driver);
+	public UserAddressPageObject openAddressPage(WebDriver driver) {
+		waitForElementClickable(driver, UserBasePageUI.ADDRESS_LINK);
+		clickToElement(driver, UserBasePageUI.ADDRESS_LINK);
+		return PageGeneratorManager.getUserAddressPageOfnopCommerce(driver);
 	}
 	
-	public CustomerInforPageObject_Nop openCustomerInforPage(WebDriver driver) {
-		waitForElementClickable(driver, BasePageUI.CUSTOMER_INFOR_LINK);
-		clickToElement(driver, BasePageUI.CUSTOMER_INFOR_LINK);
+	public UserCustomerInforPageObject openCustomerInforPage(WebDriver driver) {
+		waitForElementClickable(driver, UserBasePageUI.CUSTOMER_INFOR_LINK);
+		clickToElement(driver, UserBasePageUI.CUSTOMER_INFOR_LINK);
 		return PageGeneratorManager.getUserCustomerInforPageOfnopCommerce(driver);
 	}
 
-	public MyProductReviewPageObject_Nop openMyProductReviewPage(WebDriver driver) {
-		waitForElementClickable(driver, BasePageUI.MY_PRODUCT_REVIEW_LINK);
-		clickToElement(driver, BasePageUI.MY_PRODUCT_REVIEW_LINK);
-		return PageGeneratorManager.getMyProductReviewPageOfnopCommerce(driver);
+	public UserMyProductReviewPageObject openMyProductReviewPage(WebDriver driver) {
+		waitForElementClickable(driver, UserBasePageUI.MY_PRODUCT_REVIEW_LINK);
+		clickToElement(driver, UserBasePageUI.MY_PRODUCT_REVIEW_LINK);
+		return PageGeneratorManager.getUserMyProductReviewPageOfnopCommerce(driver);
 	}
 
-	public RewardPointPageObject_Nop openRewardPoint(WebDriver driver) {
-		waitForElementClickable(driver, BasePageUI.REWARD_POINT_LINK);
-		clickToElement(driver, BasePageUI.REWARD_POINT_LINK);
-		return PageGeneratorManager.getRewardPointageOfnopCommerce(driver);
+	public UserRewardPointPageObject openRewardPoint(WebDriver driver) {
+		waitForElementClickable(driver, UserBasePageUI.REWARD_POINT_LINK);
+		clickToElement(driver, UserBasePageUI.REWARD_POINT_LINK);
+		return PageGeneratorManager.getUserRewardPointageOfnopCommerce(driver);
+	}
+	
+	public UserHomePageObject clickToLogoutLinkUserPage(WebDriver driver) {
+		waitForElementClickable(driver, UserBasePageUI.LOGOUT_LINK_AT_USER);
+		clickToElement(driver, UserBasePageUI.LOGOUT_LINK_AT_USER);
+		return PageGeneratorManager.getUserHomePageOfnopCommerce(driver);
 	}
 
+	public AdminLoginPageObject clickToLogoutLinkAdminPage(WebDriver driver) {
+		waitForElementClickable(driver, UserBasePageUI.LOGOUT_LINK_AT_ADMIN);
+		clickToElement(driver, UserBasePageUI.LOGOUT_LINK_AT_ADMIN);
+		return PageGeneratorManager.getAdminLoginPageOfnopCommerce(driver);
+		
+	}
 }

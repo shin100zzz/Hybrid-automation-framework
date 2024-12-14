@@ -10,23 +10,23 @@ import org.testng.annotations.Test;
 import commons.BaseTest;
 import commons.PageGeneratorManager;
 
-import pageObjects.nopCommerce.user.HomePageObject_Nop;
-import pageObjects.nopCommerce.user.LoginPageObject_Nop;
-import pageObjects.nopCommerce.user.RegisterPageObject_Nop;
-import pageObjects.nopCommerce.user.AddressPageObject_Nop;
-import pageObjects.nopCommerce.user.CustomerInforPageObject_Nop;
-import pageObjects.nopCommerce.user.MyProductReviewPageObject_Nop;
-import pageObjects.nopCommerce.user.RewardPointPageObject_Nop;
+import pageObjects.nopCommerce.user.UserHomePageObject;
+import pageObjects.nopCommerce.user.UserLoginPageObject;
+import pageObjects.nopCommerce.user.UserRegisterPageObject;
+import pageObjects.nopCommerce.user.UserAddressPageObject;
+import pageObjects.nopCommerce.user.UserCustomerInforPageObject;
+import pageObjects.nopCommerce.user.UserMyProductReviewPageObject;
+import pageObjects.nopCommerce.user.UserRewardPointPageObject;
 
 public class Level_07_Switch_Page extends BaseTest {
 	private WebDriver driver;
-	private HomePageObject_Nop homePage;
-	private RegisterPageObject_Nop registerPage;
-	private LoginPageObject_Nop loginPage;
-	private CustomerInforPageObject_Nop customerInforPage;
-	private AddressPageObject_Nop addressPage;
-	private RewardPointPageObject_Nop rewardPointPage;
-	private MyProductReviewPageObject_Nop myProductReviewPage;
+	private UserHomePageObject homePage;
+	private UserRegisterPageObject registerPage;
+	private UserLoginPageObject loginPage;
+	private UserCustomerInforPageObject customerInforPage;
+	private UserAddressPageObject addressPage;
+	private UserRewardPointPageObject rewardPointPage;
+	private UserMyProductReviewPageObject myProductReviewPage;
 	String firstName,lastName,emailAddress,validPassword;
 	
 	@Parameters({"browser", "url"})

@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import commons.BasePageFactory;
-import pageUI.nopCommerce.user.RegisterPageUI_Nop;
+import pageUI.nopCommerce.user.UserRegisterPageUI;
 
 public class RegisterPageObject extends BasePageFactory {
 	// Biến global
